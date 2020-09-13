@@ -76,17 +76,17 @@ export default function HomeScreen() {
                     </View>
                     <CardItem>
                         <Left>
-                        <Button transparent textStyle={{color: '#87838B'}} onPress={() => Linking.openURL('tel:'+`${item.phonenumber}`)}>
-                            <Icon name="ios-call" />
-                            <Text>Call</Text>
+                        <Button transparent textStyle={{color: '#3BC400'}} onPress={() => Linking.openURL('tel:'+`${item.phonenumber}`)}>
+                            <Icon style={{color: '#3BC400'}} name="ios-call" />
+                            <Text style={{color: '#3BC400'}}>Call</Text>
                         </Button>
-                        <Button transparent textStyle={{color: '#87838B'}} onPress={() => Linking.openURL('sms:'+`${item.phonenumber}`)}>
-                            <Icon name="ios-notifications" />
-                            <Text>Text</Text>
+                        <Button transparent textStyle={{color: '#3BC400'}} onPress={() => Linking.openURL('sms:'+`${item.phonenumber}`)}>
+                            <Icon style={{color: '#3BC400'}} name="ios-notifications" />
+                            <Text style={{color: '#3BC400'}}>Text</Text>
                         </Button>
-                        <Button transparent textStyle={{color: '#87838B'}}  onPress={() => Linking.openURL(`mailto:${item.emailaddress}?subject=Tutoring`) }title="Tutoring From SLATE" >
-                            <Icon name="ios-mail" />
-                            <Text>Email</Text>
+                        <Button transparent textStyle={{color: '#3BC400'}}  onPress={() => Linking.openURL(`mailto:${item.emailaddress}?subject=Tutoring`) }title="Tutoring From SLATE" >
+                            <Icon style={{color: '#3BC400'}}name="ios-mail" />
+                            <Text style={{color: '#3BC400'}}>Email</Text>
                         </Button>
                         </Left>
                     </CardItem>

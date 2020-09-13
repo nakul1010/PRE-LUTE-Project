@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { createMaterialBottomTabNavigator, MaterialBottomTabView } from '@react-navigation/material-bottom-tabs';
 import { NavigationContainer } from '@react-navigation/native';
-import {Ionicons, Entypo, MaterialCommunityIcons, Octicons, FontAwesome5} from '@expo/vector-icons'
+import {Ionicons, Entypo, MaterialCommunityIcons, Octicons, AntDesign} from '@expo/vector-icons'
 import { createStackNavigator } from '@react-navigation/stack';
 import HomeScreen from './screens/HomeScreen'
 import SafetyScreen from './screens/SafetyScreen'
@@ -14,6 +14,7 @@ import CurrentAQIScreen from './screens/current/CurrentAQIScreen'
 import CurrentPollenScreen from './screens/current/CurrentPollenScreen'
 import ForecastedAQIScreen from './screens/forecasted/ForecastedAQIScreen'
 import ForecastedPollenScreen from './screens/forecasted/ForecastedPollenScreen'
+import PetitionsScreen from './screens/PetitionsScreen'
 import HealthAdviceScreen from './screens/HealthRecommendationScreen'
 import MLScreen from './screens/MLScreen'
 import { StyleSheet, Text, View } from 'react-native';
@@ -26,6 +27,7 @@ const HomeStack = createStackNavigator();
 const ForecastsStack = createStackNavigator()
 const SafetyStack = createStackNavigator()
 const MLStack = createStackNavigator()
+const PetitionsStack = createStackNavigator()
 
 function HomeSection({navigation}) {
   return (
@@ -165,6 +167,27 @@ function MLSection() {
     </MLStack.Navigator>
   );
 }
+function PetitionsSection() {
+  return (
+    <PetitionsStack.Navigator initialRouteName="Petitions"
+    screenOptions={{
+      headerStyle: {
+        backgroundColor: `${themeColor}`,
+      },
+      headerTintColor: '#fff',
+      headerTitleStyle: {
+        color: `${textColor}`
+      },
+    }}
+    >
+      <PetitionsStack.Screen name="Petitions" component={PetitionsScreen}
+        options={{
+          headerTitle: "Pollution Reduction Petitions",
+        }}
+      />
+    </PetitionsStack.Navigator>
+  );
+}
 export default function App() {
     return (
       <NavigationContainer>
@@ -182,7 +205,13 @@ export default function App() {
         ),
       }}
       />
-
+      <BottomTabs.Screen name="Petitions" component={PetitionsSection} 
+      options={{
+        tabBarIcon: ({color}) => (
+          <AntDesign name="copy1" size={24} color={textColor} />
+        ),
+      }}
+      />
       <BottomTabs.Screen name="Forecasts" component={ForecastsSection} 
       options={{
         tabBarIcon: ({color}) => (

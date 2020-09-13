@@ -4,7 +4,7 @@ import {View, StyleSheet, StatusBar, Dimensions} from 'react-native'
 import * as Permissions from 'expo-permissions';
 import * as Location from 'expo-location';
 import * as WebBrowser from 'expo-web-browser'
-import {MaterialCommunityIcons, Ionicons} from '@expo/vector-icons'
+import {MaterialCommunityIcons, Entypo, Feather, Fontisto} from '@expo/vector-icons'
 import { useLinking } from '@react-navigation/native';
 const themecolor = '#fff'
  
@@ -17,9 +17,7 @@ export default class Learning extends Component {
        this.state = {
            location: null,
            datetime: null,
-           aqi: null, 
-           category: null,
-           dominant_pollutant: null,
+           apiData: null,
        }
    }
    componentDidMount(){
@@ -33,22 +31,21 @@ export default class Learning extends Component {
       this.setState({ location});
         console.log(location.coords)
         this.requestAPI()
-        console.log(this.state.aqi)
+        console.log('the value of this.state.apiData' + this.state.apiData)
     }
     else{
       Alert.alert('Location services has not been enabled. Please go to the Settings and enable it.')
     }
   }
    requestAPI = () => {
-    fetch(`https://api.breezometer.com/air-quality/v2/current-conditions?lat=${this.state.location.coords.latitude}&lon=${this.state.location.coords.longitude}&key=8d69f59b396740af97c6ace202996808`).then((response) => response.text())
+    fetch(`https://api.breezometer.com/air-quality/v2/current-conditions?lat=${this.state.location.coords.latitude}&lon=${this.state.location.coords.longitude}&key=8d69f59b396740af97c6ace202996808&features=breezometer_aqi,local_aqi,health_recommendations,sources_and_effects,pollutants_concentrations,pollutants_aqi_information`).then((response) => response.json())
     .then((res) => {
-        console.log(res);
-        this.setState({aqi: res})
+        this.setState({apiData: res})
     })
     }
 
   render() {
-    if(this.state.aqi === null){
+    if(this.state.apiData === null){
         return(<View></View>)
     }
     return (
@@ -56,7 +53,7 @@ export default class Learning extends Component {
         <Content>
         <View style={styles.container}>
             <StatusBar/>
-    <Text style={{fontSize: 16, paddingLeft: 10, marginBottom: 5}}>Showing Results as of {this.state.aqi.aqi}</Text>
+    <Text style={{fontSize: 16, paddingLeft: 10, marginBottom: 5}}>Showing Results as of {this.state.apiData.data.datetime}</Text>
             <View
             style={{
                 borderTopWidth: 6,
@@ -69,39 +66,29 @@ export default class Learning extends Component {
                 <Text style={{color: `${themecolor}`}}>Air Quality Index</Text>
                 <Text></Text>
                 <View style={{flexDirection: 'row'}}>
-                    <Ionicons name="ios-people" size={30} color="#fff" style={{paddingRight: 5}}/>
+                    <Entypo name="air" size={30} color="#fff" style={{paddingRight: 5}}/>
                     <Text></Text>
-        <Text style={{fontSize: 24, color: `${themecolor}`}}>{this.state.aqi}</Text>
+        <Text style={{fontSize: 24, color: `${themecolor}`}}>{this.state.apiData.data.indexes.baqi.aqi}</Text>
                 </View>
             </View>
             <View style={{margin: 8, borderRadius: 20, paddingVertical: 20, paddingHorizontal: 24, width: (screenWidth-64/2), backgroundColor: `${tabcolor}`}}>
                 <Text style={{color: `${themecolor}`}}>Level of Severness:</Text>
                 <Text></Text>
                 <View style={{flexDirection: 'row'}}>
-                    <MaterialCommunityIcons name="hospital-box" size={24} color={themecolor} style={{paddingRight: 5}} />
+                    <Feather name="alert-triangle" size={24} color={themecolor} style={{paddingRight: 5}} />
                     <Text></Text>
-                    <Text style={{fontSize: 24, color: `${themecolor}`}}>{this.state.aqi}</Text>
+                    <Text style={{fontSize: 24, color: `${themecolor}`}}>{this.state.apiData.data.indexes.baqi.category}</Text>
                 </View>
             </View>
             <View style={{margin: 8, borderRadius: 20, paddingVertical: 20, paddingHorizontal: 24, width: (screenWidth-64/2), backgroundColor: `${tabcolor}`}}>
                 <Text style={{color: `${themecolor}`}}>Most Dominant Pollutant:</Text>
                 <Text></Text>
                 <View style={{flexDirection: 'row'}}>
-                    <MaterialCommunityIcons name="chart-areaspline" size={24} color="#fff" style={{paddingRight: 5}}/>
+                    <Fontisto name="trash" size={24} color="#fff" style={{paddingRight: 5}}/>
                     <Text></Text>
-                    <Text style={{fontSize: 24, color: '#fff'}}>{this.state.aqi}</Text>
+                    <Text style={{fontSize: 24, color: '#fff'}}>{this.state.apiData.data.indexes.baqi.dominant_pollutant}</Text>
                 </View>
             </View>
-            <View style={{margin: 8, borderRadius: 20, paddingVertical: 20, paddingHorizontal: 24, width: (screenWidth-64/2), backgroundColor: `${tabcolor}`}}>
-                <Text style={{color: `${themecolor}`}}>Other IDEAL Drivers on the Road:</Text>
-                <Text></Text>
-                <View style={{flexDirection: 'row'}}>
-                    <Ionicons name="ios-people" size={30} color="#fff" style={{paddingRight: 5}}/>
-                    <Text></Text>
-                    <Text style={{fontSize: 24, color: `${themecolor}`}}>0</Text>
-                </View>
-            </View>
-            
         </View>
         </Content>
       </Container>
