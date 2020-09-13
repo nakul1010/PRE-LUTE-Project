@@ -7,7 +7,7 @@ const website = 'http://pre-lute.surge.sh'
 export default class MLTool extends React.Component{
     render(){
         return(
-            <WebView source={{ uri: 'http://pre-lute.surge.sh' }}  />
+            <WebView source={{ uri: 'http://pre-lute.surge.sh/pollution.html' }}  />
         )
     }
 }
