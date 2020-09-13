@@ -19,7 +19,7 @@ import HealthAdviceScreen from './screens/HealthRecommendationScreen'
 import MLScreen from './screens/MLScreen'
 import { StyleSheet, Text, View } from 'react-native';
 import {IconButton} from 'react-native-paper'
-
+console.disableYellowBox
 const textColor = '#fff'
 const themeColor = '#3BC400'
 const BottomTabs = createMaterialBottomTabNavigator();

@@ -76,7 +76,7 @@ export default class HomeScreen extends React.Component{
                 <TouchableOpacity style={styles.coupon} onPress={() => 
                 this.props.navigation.navigate('Health Reccomendations')} >
                     <Image style={styles.image}source={require('./../assets/health1.png')}/>
-                    <Text style={styles.title}>Health Advice</Text>
+                    <Text style={styles.title}>Health{'\n'} Advice</Text>
                 </TouchableOpacity>
             </View>
         </View>
