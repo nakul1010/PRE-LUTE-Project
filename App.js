@@ -5,9 +5,16 @@ import {Ionicons, Entypo, MaterialCommunityIcons, Octicons, FontAwesome5} from '
 import { createStackNavigator } from '@react-navigation/stack';
 import HomeScreen from './screens/HomeScreen'
 import SafetyScreen from './screens/SafetyScreen'
+import PollenHeatmapScreen from './screens/heatmaps/PollutionHMScreen'
+import PollutionHeatmapScreen from './screens/heatmaps/PollutionHMScreen'
+import AQHeatmapScreen from './screens/heatmaps/AQHMScreen'
 import AddPostFormScreen from './screens/AddPostForm'
 import ForecastsScreen from './screens/ForecastsScreen'
-import HeatMapsScreen from './screens/TPHeatMapScreen'
+import CurrentAQIScreen from './screens/current/CurrentAQIScreen'
+import CurrentPollenScreen from './screens/current/CurrentPollenScreen'
+import ForecastedAQIScreen from './screens/forecasted/ForecastedAQIScreen'
+import ForecastedPollenScreen from './screens/forecasted/ForecastedPollenScreen'
+import HealthAdviceScreen from './screens/HealthRecommendationScreen'
 import MLScreen from './screens/MLScreen'
 import { StyleSheet, Text, View } from 'react-native';
 import {IconButton} from 'react-native-paper'
@@ -70,6 +77,46 @@ function ForecastsSection() {
       <ForecastsStack.Screen name="Forecasts" component={ForecastsScreen}
         options={{
           headerTitle: "Forecasts",
+        }}
+      />
+      <ForecastsStack.Screen name="Current AQI" component={CurrentAQIScreen}
+        options={{
+          headerTitle: "Current Air Quality Index",
+        }}
+      />
+      <ForecastsStack.Screen name="Forecasted AQI" component={ForecastedAQIScreen}
+        options={{
+          headerTitle: "Forecasted Air Quality Index",
+        }}
+      />
+      <ForecastsStack.Screen name="Forecasted Pollen" component={ForecastedPollenScreen}
+        options={{
+          headerTitle: "Forecasted Pollen",
+        }}
+      />
+      <ForecastsStack.Screen name="Current Pollen" component={CurrentPollenScreen}
+        options={{
+          headerTitle: "Current Pollen",
+        }}
+      />
+      <ForecastsStack.Screen name="Pollution Heatmap" component={PollutionHeatmapScreen}
+        options={{
+          headerTitle: "Pollution Heatmap",
+        }}
+      />
+      <ForecastsStack.Screen name="AQ Heatmap" component={AQHeatmapScreen}
+        options={{
+          headerTitle: "Air Quality Heatmap",
+        }}
+      />
+      <ForecastsStack.Screen name="Pollen Heatmap" component={PollenHeatmapScreen}
+        options={{
+          headerTitle: "Pollen Heatmap",
+        }}
+      />
+      <ForecastsStack.Screen name="Health Reccomendations" component={HealthAdviceScreen}
+        options={{
+          headerTitle: "Health Recommendations",
         }}
       />
     </ForecastsStack.Navigator>

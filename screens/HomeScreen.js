@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { Image, ScrollView, View, StyleSheet, StatusBar, Linking, FlatList} from 'react-native';
+import { Image, ScrollView, View, StyleSheet, StatusBar, Linking, FlatList,} from 'react-native';
 import { Container, Header, Content, Card, CardItem, Thumbnail, Text, Button, Icon, Left, Body} from 'native-base';
-import {Fontisto, MaterialIcons} from "@expo/vector-icons"
+import {Fontisto, MaterialIcons, Entypo} from "@expo/vector-icons"
 import * as firebase from 'firebase'
 import Firebasekeys from './config'
 import 'firebase/firestore'
@@ -16,7 +16,7 @@ export default function HomeScreen() {
       
     useEffect(() => {
         firebase.firestore()
-        .collection('Tutor Posts')
+        .collection('Collaboration Postings')
         .get()
         .then(querySnapshot => {
           const users = []
@@ -41,7 +41,6 @@ export default function HomeScreen() {
     }
     return (
         <ScrollView>
-            <Statusbar barStyle='light-content'/>
             <FlatList
                 data={users}
                 renderItem={({ item }) => (
@@ -68,12 +67,12 @@ export default function HomeScreen() {
                     <Text></Text>
                     <View style={{flexDirection: "row", flex: 0.8}}>
                             <MaterialIcons name="subject" size={14} color="#000" style={{marginLeft: 16}}/>
-                            <Text style={{marginLeft: 10, fontSize: 14, color:  "#000", flex: 0.9}}>Subjects Willing to Tutor: {item.subjects}</Text>
+                            <Text style={{marginLeft: 10, fontSize: 14, color:  "#000", flex: 0.9}}>Efforts Involved: {item.efforts}</Text>
                     </View>
                     <Text></Text>
                     <View style={{flexDirection: "row", flex: 0.8}}>
-                            <Fontisto name="dollar" size={14} color="#000" style={{marginLeft: 16}}/>
-                            <Text style={{marginLeft: 10, fontSize: 14, color:  "#000", flex: 0.9}}>Cost: {item.cost}</Text>
+                            <Entypo name="bucket" size={14} color="#000" style={{marginLeft: 16}}/>
+                            <Text style={{marginLeft: 10, fontSize: 14, color:  "#000", flex: 0.9}}>Supplies: {item.supplies}</Text>
                     </View>
                     <CardItem>
                         <Left>

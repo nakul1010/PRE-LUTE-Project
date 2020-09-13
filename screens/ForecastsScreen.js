@@ -18,7 +18,7 @@ export default class HomeScreen extends React.Component{
     render(){
         return(
         <View style={styles.welcomer}><StatusBar barStyle="light-content"/>
-            <Text style={{fontWeight: "700", fontSize: 30, paddingBottom: 10}}>Welcome {this.state.displayName}</Text>
+            <Text style={{fontWeight: "700", fontSize: 30, paddingBottom: 10}}>Air Pollution Forecasts</Text>
             <View
             style={{
                 borderTopWidth: 6,
@@ -30,51 +30,51 @@ export default class HomeScreen extends React.Component{
             />
             <View style={{flexDirection: 'row'}}>
                 <TouchableOpacity style={styles.coupon} onPress={() => 
-                this.props.navigation.navigate('Prizes')}>
-                    {/* <Image style={styles.image}source={require('./../assets/reward.png')}/> */}
+                this.props.navigation.navigate('Current AQI')}>
+                    <Image style={styles.image}source={require('./../assets/current.jpg')}/>
                     <Text></Text>
-                    <Text style={styles.title}>Current AQI</Text>
+                <Text style={styles.title}>Current {'\n'}AQI</Text>
                 </TouchableOpacity>
                 
                 <TouchableOpacity style={styles.coupon} onPress={() => 
-                this.props.navigation.navigate('Submitted Requests')} >
-                    {/* <Image style={styles.image}source={require('./../assets/view.png')}/> */}
+                this.props.navigation.navigate('Forecasted AQI')} >
+                    <Image style={styles.image}source={require('./../assets/forecasts.jpg')}/>
                     <Text style={styles.title}>Forecasted AQI</Text>
                 </TouchableOpacity>
             </View>
             <View style={{flexDirection: 'row'}}>
                 <TouchableOpacity style={styles.coupon} onPress={() => 
-                this.props.navigation.navigate('Footprint')} >
+                this.props.navigation.navigate('Current Pollen')} >
                     <Image style={styles.image}source={require('./../assets/pollen.png')}/>
-                    <Text style={styles.title}>Current Pollen Index</Text>
+                    <Text style={styles.title}>Current Pollen</Text>
                 </TouchableOpacity>
                 <TouchableOpacity style={styles.coupon} onPress={() => 
-                this.props.navigation.navigate('Footprint')} >
+                this.props.navigation.navigate('Forecasted Pollen')} >
                     <Image style={styles.image}source={require('./../assets/pf.png')}/>
-                    <Text style={styles.title}>Forecasted Pollen Index</Text>
+                    <Text style={styles.title}>Forecasted Pollen </Text>
                 </TouchableOpacity>
                
             </View>
             <View style={{flexDirection: 'row'}}>
                 <TouchableOpacity style={styles.coupon} onPress={() => 
-                this.props.navigation.navigate('Rewards Form')} >
+                this.props.navigation.navigate('Pollution Heatmap')} >
                     <Image style={styles.image}source={require('./../assets/pollution1.png')}/>
                     <Text style={styles.title}>Pollution Heatmap</Text>
                 </TouchableOpacity>
                 <TouchableOpacity style={styles.coupon} onPress={() => 
-                this.props.navigation.navigate('Savings')} >
+                this.props.navigation.navigate('AQ Heatmap')} >
                     <Image style={styles.image}source={require('./../assets/hm.png')}/>
                     <Text style={styles.title}>Air Quality Heatmap</Text>
                 </TouchableOpacity>
             </View>
             <View style={{flexDirection: 'row'}}>
                 <TouchableOpacity style={styles.coupon} onPress={() => 
-                this.props.navigation.navigate('Rewards Form')} >
+                this.props.navigation.navigate('Pollen Heatmap')} >
                     <Image style={styles.image}source={require('./../assets/pollenhm.png')}/>
                     <Text style={styles.title}>Pollen Heatmap</Text>
                 </TouchableOpacity>
                 <TouchableOpacity style={styles.coupon} onPress={() => 
-                this.props.navigation.navigate('Savings')} >
+                this.props.navigation.navigate('Health Reccomendations')} >
                     <Image style={styles.image}source={require('./../assets/health1.png')}/>
                     <Text style={styles.title}>Health Advice</Text>
                 </TouchableOpacity>

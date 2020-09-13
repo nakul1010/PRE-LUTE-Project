@@ -21,12 +21,12 @@ export default class FormExample extends Component {
     title: '',
     phonenumber: '',
     emailaddress: '',
-    cost: ''
+    supplies: ''
   };
 
   submissionHandler = async uri => {
         firebase.firestore()
-        .collection('Tutor Posts')
+        .collection('Collaboration Postings')
         .add({
             name: this.state.name,
             title: this.state.title,
@@ -35,7 +35,7 @@ export default class FormExample extends Component {
             title: this.state.title,
             phonenumber: this.state.phonenumber,
             emailaddress: this.state.emailaddress,
-            cost: this.state.cost,
+            supplies: this.state.supplies,
             description: this.state.description
         })
     setTimeout(() => {
@@ -66,7 +66,7 @@ export default class FormExample extends Component {
     })
   }
 
-  onChangeCost = (text) => {
+  onChangeSupplies = (text) => {
     this.setState({
       cost: text,
     })
@@ -115,8 +115,8 @@ export default class FormExample extends Component {
               </Form>
             </Content>
             <Item stackedLabel>
-              <Label>Cost</Label>
-              <Input style={FormStyles.formInput} onChangeText={this.onChangeCost}/>
+              <Label>Supplies</Label>
+              <Input style={FormStyles.formInput} onChangeText={this.onChangeSupplies}/>
             </Item>
             <Item stackedLabel>
               <Label>Date</Label>
@@ -140,3 +140,21 @@ export default class FormExample extends Component {
   }
 }
 
+const FormStyles = StyleSheet.create({
+  formInput: {
+    padding: 10,
+
+  },
+  container: {
+    flex: 1,
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  bold: {
+    color: '#000'
+  },
+  text: {
+    color: '#ffffff',
+    fontSize: 16
+  }})
